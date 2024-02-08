@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddBook"
+    >
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:text="You can Add your Book here"
+        android:textSize="18sp"
+        android:textColor="#560bad"
+        android:gravity="center"
+        android:padding="16dp"
+
+        />
+
+    <EditText
+        android:id="@+id/bookname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="50dp"
+        style="@style/EdtTxt"
+        android:hint="Name of book"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:hint="Description"
+        android:layout_marginTop="10dp"
+        android:layout_height="200dp"
+        android:ems="10"
+        style="@style/EdtTxt"
+        android:gravity="top"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="165dp"
+        android:background="@drawable/button_background"
+        android:text="Add" />
+
+
+
+</LinearLayout>

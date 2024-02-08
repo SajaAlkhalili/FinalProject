@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFDFD"
+    android:padding="16dp"
+    android:scrollbarSize="200dp">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Feedback Doctor"
+        android:textColor="#603A91"
+        android:textSize="40sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCourseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCourseCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Doctor Name" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="283dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/teacher" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ListView
+        android:id="@+id/listViewFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="116dp"
+        android:layout_below="@id/textInputLayoutCourseCode"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textViewFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Write your feedback here"
+        android:visibility="gone" />
+
+</RelativeLayout>
