@@ -1,8 +1,9 @@
 package edu.birzeit.students.finalproject;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,22 +32,38 @@ public class showMybooks extends AppCompatActivity {
     private RequestQueue queue;
     SearchView searchView;
     private ListView lstView;
+    private SwipeRefreshLayout swipeToRefresh; // Added SwipeRefreshLayout
     ArrayList<String> data;
     ArrayAdapter<String> adapter;
     ArrayList<Integer> bookIds = new ArrayList<>(); // Declare an ArrayList to store the ids
     ArrayList<String> descriptions = new ArrayList<>(); // Declare an ArrayList to store the descriptions
+    String cat;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_mybooks);
         searchView = findViewById(R.id.search_bar);
         lstView = findViewById(R.id.lstView);
+        swipeToRefresh = findViewById(R.id.swipeToRefresh); // Initialize SwipeRefreshLayout
         data = new ArrayList<>();
-        String cat = getIntent().getStringExtra("category");
-
+        cat = getIntent().getStringExtra("category");
         queue = Volley.newRequestQueue(this);
 
+        fetchData(); // Initial data fetch
+
+        // Set up SwipeRefreshLayout for refresh functionality
+        refreshApp();
+
+        // Set up the adapter and item click listener
+        setAdapterAndClickListener();
+
+        // Set up search functionality
+        search(searchView);
+    }
+
+    private void fetchData() {
         String url = "http://10.0.2.2:5000/recbooks";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -60,35 +77,17 @@ public class showMybooks extends AppCompatActivity {
                                 String name = obj.getString("name");
                                 String category = obj.getString("category");
                                 int id = obj.getInt("id");
-                                String description=obj.getString("description");
+                                String description = obj.getString("description");
                                 data.add(name + "\r Category: " + category);
                                 bookIds.add(id);
                                 descriptions.add(description);
-
                             }
                         } catch (JSONException e) {
                             Log.e("JSON Error", "Error parsing JSON array: " + e.toString());
                         }
 
-                        // Set the adapter and item click listener outside the loop
-                        adapter = new ArrayAdapter<>(showMybooks.this,
-                                android.R.layout.simple_list_item_1, data);
-                        lstView.setAdapter(adapter);
-
-                        lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                String selectedItem = (String) parent.getItemAtPosition(position);
-                                Toast.makeText(showMybooks.this, "Clicked on: " + selectedItem, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(showMybooks.this, clickmyBooks.class);
-                                intent.putExtra("Items", selectedItem);
-                                intent.putExtra("description", descriptions.get(position)); // Use the correct description for the clicked item
-                                intent.putExtra("cat", cat);
-                                intent.putExtra("id", bookIds.get(position)); // Use the correct id for the clicked item
-                                Log.d("Debug", "show my books id : " + bookIds.get(position));
-                                startActivity(intent);
-                            }
-                        });
+                        // Notify the adapter of changes
+                        adapter.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
@@ -99,7 +98,42 @@ public class showMybooks extends AppCompatActivity {
                 });
 
         queue.add(jsonArrayRequest);
-        search(searchView);
+    }
+
+    private void setAdapterAndClickListener() {
+        // Set the adapter and item click listener outside the loop
+        adapter = new ArrayAdapter<>(showMybooks.this,
+                android.R.layout.simple_list_item_1, data);
+        lstView.setAdapter(adapter);
+
+        lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                Toast.makeText(showMybooks.this, "Clicked on: " + selectedItem, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(showMybooks.this, clickmyBooks.class);
+                intent.putExtra("Items", selectedItem);
+                intent.putExtra("description", descriptions.get(position)); // Use the correct description for the clicked item
+                intent.putExtra("cat", cat);
+                intent.putExtra("id", bookIds.get(position)); // Use the correct id for the clicked item
+                Log.d("Debug", "show my books id : " + bookIds.get(position));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void refreshApp() {
+        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Handle refresh action here
+                data.clear();
+                bookIds.clear();
+                descriptions.clear();
+                fetchData(); // Re-fetch data
+                swipeToRefresh.setRefreshing(false);
+            }
+        });
     }
 
     public void search(SearchView searchView) {
@@ -120,6 +154,4 @@ public class showMybooks extends AppCompatActivity {
             }
         });
     }
-
-
 }

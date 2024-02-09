@@ -14,7 +14,28 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".FeedBackDoctor"
+            android:name=".FeedBackApp"
+            android:exported="false" />
+        <activity
+            android:name=".getDoctorFeedBack"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorClick"
+            android:exported="false" />
+        <activity
+            android:name=".AddDoctor"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorFeedBack"
+            android:exported="false" />
+        <activity
+            android:name=".AddCourse"
+            android:exported="false" />
+        <activity
+            android:name=".coursefeedbacks"
+            android:exported="false" />
+        <activity
+            android:name=".ItemClick"
             android:exported="false" />
         <activity
             android:name=".whenItemClick"

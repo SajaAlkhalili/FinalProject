@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".lst">
+    tools:context=".coursefeedbacks">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"

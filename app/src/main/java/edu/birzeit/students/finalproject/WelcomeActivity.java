@@ -30,6 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
     CardView cardView;
     CardView cardView2;
     CardView cardView4;
+    CardView cardView3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,8 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(WelcomeActivity.this, "Doctor FeedBack Clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(WelcomeActivity.this, DoctorFeedBack.class);
+                startActivity(intent);
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +62,15 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle button click here
+                Toast.makeText(WelcomeActivity.this, "Course FeedBack Clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent1=new Intent(WelcomeActivity.this, coursefeedbacks.class);
+                startActivity(intent1);
+            }
+        });
         ImageView menuIcon = findViewById(R.id.menu_icon);
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +110,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         // Assuming Home is the current Activity, you might not need to do anything, or you can refresh it
                         // intent = new Intent(WelcomeActivity.this, HomeActivity.class);
                         // startActivity(intent);
+
                         break;
                     case R.id.nav_settings:
                         intent = new Intent(WelcomeActivity.this, SettingsActivity.class);
@@ -116,14 +128,15 @@ public class WelcomeActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.nav_logout:
-//                        FirebaseAuth.getInstance().signOut();
-//                        Toast.makeText(dashboardActivity.this, "Logout Successfully!", Toast.LENGTH_SHORT).show();
-//                        intent = new Intent(dashboardActivity.this, LoginActivity.class); // Go to LoginActivity after logout
-//                        startActivity(intent);
-//                        finish(); // Prevent going back to the previous activity
+
                         logout(WelcomeActivity.this);
                         break;
+                    case R.id.nav_feedback:
+                        intent = new Intent(WelcomeActivity.this, FeedBackApp.class); // Assuming you have an AboutActivity
+                        startActivity(intent);
+                        break;
                 }
+
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START); // Close the drawer
                 return true;
@@ -205,6 +218,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void ViewSetup() {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        cardView3=findViewById(R.id.cardView3);
         //navigationView.setNavigationItemSelectedListener(this);
          cardView = findViewById(R.id.cardView);
          cardView2=findViewById(R.id.cardView2);

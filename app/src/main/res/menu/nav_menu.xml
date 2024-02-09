@@ -41,5 +41,9 @@
         </menu>
 
     </item>
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/nav_feedback"
+        android:title="FeedBack"/>
 
 </menu>

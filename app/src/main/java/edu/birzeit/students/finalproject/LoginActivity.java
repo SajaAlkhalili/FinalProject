@@ -129,9 +129,9 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("email", email);
                                     startActivity(intent);
                                 } else if (email.endsWith("@Doctor.birzeit.edu")) {
-//                                Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);//change this to just get activity
-//                                intent.putExtra("email", email);
-//                                startActivity(intent);
+                                Intent intent = new Intent(LoginActivity.this, getDoctorFeedBack.class);//change this to just get activity
+                                intent.putExtra("email", email);
+                                startActivity(intent);
                                 }
 
                             } else {
