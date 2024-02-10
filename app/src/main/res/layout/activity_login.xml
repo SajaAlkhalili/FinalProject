@@ -24,10 +24,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,8 +38,8 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="65dp"
                 android:layout_marginBottom="100dp"
                 android:text="@string/welcome"
                 android:textColor="@color/purple"
@@ -141,6 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtusertype" />
 
+
             <ImageView
                 android:id="@+id/imgenter"
                 android:layout_width="wrap_content"
@@ -151,6 +152,15 @@
                 android:onClick="enterButton"
                 app:layout_constraintTop_toBottomOf="@+id/chk"
                 app:srcCompat="@drawable/btn_login" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/login_new_user"
+                android:textAlignment="center"
+                android:textColor="@color/purple" />
 
         </LinearLayout>
     </ScrollView>

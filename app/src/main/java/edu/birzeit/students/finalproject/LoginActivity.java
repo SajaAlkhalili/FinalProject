@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail;
     private EditText edtPassword;
     private CheckBox chk;
+    TextView registerTextView;
     private SharedPreferences prefs;
 
     private SharedPreferences.Editor editor;
@@ -57,6 +59,13 @@ public class LoginActivity extends AppCompatActivity {
 
         setupSharedPrefs();
         checkPrefs();
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signUpIntent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(signUpIntent);
+            }
+        });
 
     }
 
@@ -67,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         queue = Volley.newRequestQueue(this);
         chk = findViewById(R.id.chk);
+         registerTextView = findViewById(R.id.textView5);
     }
     private void setupSharedPrefs() {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
