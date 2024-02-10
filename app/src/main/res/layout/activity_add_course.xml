@@ -47,8 +47,9 @@
         android:id="@+id/add"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="165dp"
+        android:layout_marginTop="20dp"
+        android:background="#7B60B1"
         android:text="Add" />
 
 
