@@ -21,7 +21,7 @@ public class DoctorClick extends AppCompatActivity {
         desc = getIntent().getStringExtra("feedback");
 
         // Log.d("Debug", "Received id in whenItemClick: " + bookID);
-        txt.setText(" " + item + " \n " + desc);
+        txt.setText(" " + item +" :" + " \n \n " + desc);
 
 
     }

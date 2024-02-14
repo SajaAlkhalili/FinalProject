@@ -64,23 +64,53 @@
                 android:textColor="@color/purple"
                 android:textColorHint="@color/purple" />
 
-            <EditText
-                android:id="@+id/edtPassword"
+<!--            <EditText-->
+<!--                android:id="@+id/edtPassword"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                android:layout_marginEnd="32dp"-->
+<!--                android:autofillHints=""-->
+<!--                android:background="@drawable/edittext_background"-->
+<!--                android:drawableStart="@drawable/password"-->
+<!--                android:drawablePadding="16dp"-->
+<!--                android:ems="10"-->
+<!--                android:hint="@string/prompt_password"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:padding="8dp"-->
+<!--                android:textColor="@color/purple"-->
+<!--                android:textColorHint="@color/purple" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/edtPasswordLayout"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:autofillHints=""
-                android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/password"
-                android:drawablePadding="16dp"
-                android:ems="10"
-                android:hint="@string/prompt_password"
-                android:inputType="textPassword"
-                android:padding="8dp"
-                android:textColor="@color/purple"
-                android:textColorHint="@color/purple" />
+                app:endIconMode="password_toggle"
+
+                app:endIconTint="@color/purple"
+                android:textColorHint="@color/purple"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_background"
+                    android:drawableStart="@drawable/password"
+                    android:drawablePadding="16dp"
+                    android:ems="10"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/purple"
+                  />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!--            <TableLayout-->
             <!--                android:id="@+id/tableLayout"-->

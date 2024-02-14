@@ -7,14 +7,14 @@ import android.widget.TextView;
 
 public class AccountActivity extends AppCompatActivity {
     private TextView userNameTextView;
-    private TextView userEmailTextView;
+    //private TextView userEmailTextView;
     private TextView emailTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         userNameTextView =findViewById(R.id.userName);
-        userEmailTextView =findViewById(R.id.userEmail);
+
         emailTextView =findViewById(R.id.textView27);
         String email = getIntent().getStringExtra("email");
         if(email != null) {
@@ -25,7 +25,7 @@ public class AccountActivity extends AppCompatActivity {
                 // Set the extracted name in userNameTextView
                 userNameTextView.setText(name);
             }
-            userEmailTextView.setText(email);
+            //userEmailTextView.setText(email);
             emailTextView.setText(email);
         }
     }
